@@ -1,0 +1,20 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+   name: k8slab
+spec:
+   replicas: 2
+   selector:      # tells the controller which pods to watch/belong to
+    matchLabels:
+     app: k8slab
+   template:
+      metadata:
+        labels:
+          app: k8slab
+      spec:
+       containers:
+        - name: k8slab
+          image: raoshahzaib/k8s-lab
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 80
